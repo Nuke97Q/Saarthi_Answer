@@ -1,0 +1,69 @@
+6.Write a python program to convert a list of dictionaries which may contain duplicate dictonaries into a list containing unique dictionaries.
+
+  Example - Input
+            dict_list=[{'name': 'affirm', 'confidence': 0.9448149204254}, {'name': 'affirm', 'confidence': 0.944814920425415}, {'name': 'inform', 'confidence': 0.9842240810394287}, {'name': 'inform', 'confidence': 0.9842240810394287}]
+
+            output=[{'name': 'affirm', 'confidence': 0.9448149204254}, {'name': 'affirm', 'confidence': 0.944814920425415}, {'name': 'inform', 'confidence': 0.9842240810394287}]
+
+Code:-
+l=[{'name': 'affirm', 'confidence': 0.9448149204254}, {'name': 'affirm', 'confidence': 0.944814920425415}, {'name': 'inform', 'confidence': 0.9842240810394287}, {'name': 'inform', 'confidence': 0.9842240810394287}]
+x=[]
+for i in l:
+    if i not in x:
+        x.append(i)
+print(x)
+
+
+7.Write a Python program to check the validity of password input by users. It should validate the password with given below conditions.
+
+          *At least 1 letter between [a-z] and 1 letter between [A-Z].
+          *At least 1 number between [0-9].
+          *At least 1 special character [!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~].
+          *Minimum length 6 characters.
+          *Maximum length 16 characters.
+
+COde:-
+import re                           	#Import Regular Expression lib
+pas=input("Enter Your Password:-") 		 #UserInput Password
+x=True
+while x:
+    if( len(pas)>6 or len(pas)<16):  	#validating condition
+        break
+    elif not re.search("[a-z]",pas): 	#validating condition
+        break
+    elif not re.search("[A-Z]",pas):
+        break
+    elif not re.search("[0-9]",pas):
+        break
+    elif not re.search ('!#$%&*()+,-./:"''";<=>?@[\]^_`{|}~',pas):
+        break
+    else:
+        print("Password Valid")
+        x=False
+        break
+if x:
+    print("Not Valid")
+
+
+8.Write a Python program to combine two dictionary adding values for common keys.
+
+                   d1 = {'a': 100, 'b': 200, 'c':300}
+                   d2 = {'a': 300, 'b': 200, 'd':400}
+                   output= {'a': 400, 'b': 400, 'd': 400, 'c': 300}
+Code:-
+def merge(dict1,dict2):
+    return(dict2.update(dict1))
+dict1 = {'a': 100, 'b': 200, 'c':300}
+dict2 = {'a': 300, 'b': 200, 'd':400}
+
+dict3={}
+
+for k1,v1 in dict1.items():
+    for k2,v2 in dict2.items():
+        if k1==k2:
+            val=v1+v2
+            dict3[k1]=val
+merge(dict3,dict1)
+merge(dict1,dict2)
+print(dict2)
+
